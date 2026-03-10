@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vens Securly Hub V2.5</title>
+    <link rel="icon" href="https://ssl.gstatic.com">
+    <style type="text/css">
+        body {
+            background-color: #0a0a0a; color: #bc13fe; font-family: 'Courier New', monospace;
+            margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center;
+        }
+        header { text-align: center; padding: 20px; border-bottom: 2px solid #bc13fe; width: 80%; margin-bottom: 30px; }
+        h1 { font-size: 38px; margin: 0; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 12px #bc13fe; }
+        .hub-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 95%; max-width: 1200px; }
+        .button { position: relative; height: 85px; border: 2px solid #bc13fe; background: rgba(188, 19, 254, 0.05); transition: all 0.3s ease; }
+        .button:hover { background: #bc13fe; box-shadow: 0 0 25px #bc13fe; transform: translateY(-3px); }
+        .button:hover .button-text { color: #0a0a0a; }
+        .button-text { text-decoration: none; color: #bc13fe; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; font-weight: bold; }
+        .desc { font-size: 9px; text-transform: none; margin-top: 4px; opacity: 0.8; }
+        .panic-bar { color: #ff4444; font-size: 14px; margin-bottom: 20px; border: 1px solid #ff4444; padding: 10px; background: rgba(255,0,0,0.1); width: 80%; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VENS SECURLY HUB</h1>
+        <div style="color: #888; font-size: 14px;">[REDACTED SYSTEM ACCESS]</div>
+    </header>
+
+    <div class="panic-bar">PRESS "Q" TO PANIC TO CLASSROOM | STEALTH LOADER DISGUISES TAB</div>
+
+    <div class="hub-container">
+        
+        <!-- HISTORY FLOODER (NEW) -->
+        <div class="button" style="border-color: #ff00ff;">
+            <a href="javascript:(function(){
+                var url='https://classroom.google.com';
+                var num=prompt('How many times to flood history with Classroom? (Recommended: 50-100)', '50');
+                if(num){
+                    for(var i=0; i<parseInt(num); i++){
+                        history.pushState({}, '', url + '#' + Math.random());
+                    }
+                    alert('History Flooded with ' + num + ' entries of Google Classroom.');
+                }
+            })();" class="button-text">
+                HISTORY_FLOODER
+                <span class="desc">Spams Classroom URLs to hide game history</span>
+            </a>
+        </div>
+
+        <!-- THE MASTER STEALTH LOADER -->
+        <div class="button" style="border-color: #00ff00;">
+            <a href="javascript:(function(){
+                window.onkeydown = function(e){ if(e.key.toLowerCase() == 'q') window.location.replace('https://classroom.google.com'); };
+                document.title = 'Google Docs';
+                var link = document.querySelector('link[rel*=\'icon\']') || document.createElement('link');
+                link.type = 'image/x-icon'; link.rel = 'shortcut icon';
+                link.href = 'https://ssl.gstatic.com';
+                document.getElementsByTagName('head')[0].appendChild(link);
+                alert('Stealth Active: Panic Key (Q) + Tab Disguised');
+            })();" class="button-text">
+                STEALTH_LOADER_V2
+                <span class="desc">DRAG TO BAR: Panic Key + Tab Cloak</span>
+            </a>
+        </div>
+
+        <!-- EAT_CURLY REINFORCED -->
+        <div class="button">
+            <a href="javascript:(function(){
+                var d = new Date(); d.setTime(d.getTime() + (1000*24*60*60*1000));
+                var exp = 'expires='+d.toUTCString();
+                document.cookie = 'securly_filter=disabled;' + exp + ';path=/;domain=.securly.com';
+                document.cookie = 'securly_user=disabled;' + exp + ';path=/;domain=.securly.com';
+                alert('Securly Cookies Corrupted.');
+            })();" class="button-text">
+                EAT_CURLY (V2)
+                <span class="desc">Cookie-based filter disruption</span>
+            </a>
+        </div>
+
+        <!-- QUICK SWITCHER -->
+        <div class="button">
+            <a href="javascript:(function(){
+                var t = prompt('1: Classroom, 2: IXL, 3: iReady');
+                if(t=='1')location.href='https://classroom.google.com';
+                if(t=='2')location.href='https://www.ixl.com';
+                if(t=='3')location.href='https://login.i-ready.com';
+            })();" class="button-text">
+                QUICK_SWITCH
+                <span class="desc">Fast jump to educational sites</span>
+            </a>
+        </div>
+
+        <!-- PROXIES & UNBLOCKERS -->
+        <div class="button">
+            <a href="https://shuttle.rip" target="_blank" class="button-text">
+                SHUTTLE_PROXY
+                <span class="desc">Unblocked web gateway</span>
+            </a>
+        </div>
+
+        <div class="button">
+            <a href="https://3kh0.github.io" target="_blank" class="button-text">
+                3KH0_HUB
+                <span class="desc">Library of GitHub-hosted games</span>
+            </a>
+        </div>
+
+        <!-- LTBEEF GUI -->
+        <div class="button">
+            <a href="javascript:fetch('https://raw.githubusercontent.com').then(d=>d.text()).then(eval)" class="button-text">
+                KILL_EXTENSIONS
+                <span class="desc">LtbEEF GUI to disable filters</span>
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        /* Local Panic for the Hub */
+        window.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com');
+        });
+    </script>
+</body>
+</html>
