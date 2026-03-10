@@ -2,44 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Terminal V3 | 50_SOUL_NODES</title>
-    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVU...">
+    <title>Terminal V3 | User_Override</title>
     <style>
-        :root { --neon: #00ff41; --bg: #000; --panel: rgba(0, 255, 65, 0.05); --danger: #ff4444; }
+        :root { --neon: #00ff41; --bg: #000; }
         body { background: var(--bg); color: var(--neon); font-family: 'Courier New', monospace; margin: 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
         canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.2; }
         header { text-align: center; padding: 25px; border: 1px solid var(--neon); width: 85%; margin-top: 20px; background: rgba(0, 15, 0, 0.9); box-shadow: 0 0 15px var(--neon); }
         h1 { font-size: 38px; letter-spacing: 4px; text-shadow: 0 0 10px var(--neon); margin: 0; }
-        
-        .hub-container { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 12px; width: 90%; max-width: 1400px; margin-top: 30px;
-            overflow-y: auto; height: 60vh; padding: 20px; 
-            border: 1px solid rgba(0, 255, 65, 0.3); background: rgba(0,0,0,0.7);
-        }
-        
-        .button { 
-            height: 100px; border: 1px solid var(--neon); background: var(--panel); 
-            transition: 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
+        .hub-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 90%; max-width: 1400px; margin-top: 30px; overflow-y: auto; height: 60vh; padding: 20px; border: 1px solid rgba(0, 255, 65, 0.3); background: rgba(0,0,0,0.7); }
+        .button { height: 100px; border: 1px solid var(--neon); background: rgba(0, 255, 65, 0.05); transition: 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .node-link { text-decoration: none; color: var(--neon); font-weight: bold; text-align: center; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
         .button:hover { background: var(--neon); color: #000; box-shadow: 0 0 20px var(--neon); transform: scale(1.03); }
         .button:hover .node-link { color: #000; }
-        
-        .report-btn { width: 100%; height: 30px; background: rgba(255, 0, 0, 0.1); color: var(--danger); font-size: 9px; cursor: pointer; display: flex; align-items: center; justify-content: center; border-top: 1px solid var(--neon); }
         .desc { font-size: 9px; display: block; margin-top: 4px; opacity: 0.8; font-weight: normal; }
-        .ghosted { border-color: var(--danger) !important; color: var(--danger) !important; opacity: 0.5; }
-
         .nav-footer { margin: 25px 0; display: flex; gap: 20px; z-index: 10; }
         .page-link { padding: 12px 25px; border: 1px solid var(--neon); text-decoration: none; color: var(--neon); font-weight: bold; background: #000; transition: 0.3s; }
         .page-link:hover { background: var(--neon); color: #000; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--neon); }
     </style>
 </head>
 <body>
     <canvas id="matrix"></canvas>
     <header>
-        <h1>TERMINAL_V3: ELITE_GAMES</h1>
-        <div style="font-size: 10px; color: #fff; opacity: 0.6; margin-top: 8px; font-style: italic;">gatekeep ts pls // 50_SOUL_NODES</div>
+        <h1>TERMINAL_V3: USER_FEED</h1>
+        <div style="font-size: 10px; color: #fff; opacity: 0.6; font-style: italic;">gatekeep ts pls // LIVE_UPLINK_MODE</div>
     </header>
 
     <div class="hub-container" id="gameGrid"></div>
@@ -50,42 +37,34 @@
     </div>
 
     <script>
-        const gameHubs = [
-            { name: "NEBULA_X", url: "https://nebx.above.gay" },
-            { name: "INTERSTELLAR", url: "https://macarroll.com" },
-            { name: "JACK_GAMES", url: "https://michuscrypt.github.io" },
-            { name: "DOGE_UNBLOCK", url: "https://dogenetwork.org" },
-            { name: "ASTRAL_V6", url: "https://astral.v6.rocks" },
-            { name: "UNBLOCKED_64", url: "https://unblockedgames64.github.io" },
-            { name: "ALGEBRA_ICU", url: "https://algebra.icu" },
-            { name: "TOTALLY_SCIENCE", url: "https://totallyscience.co" },
-            { name: "DUCK_MATH", url: "https://duckmath.org" },
-            { name: "UTOPIA_PROX", url: "https://utopia.v6.rocks" }
+        const userLinks = [
+            { name: "WATERMELON_46", url: "https://watermelon46.com", tag: "GAMES_HUB" },
+            { name: "WOLF_CAVE_LOL", url: "https://lol.wolfcave.me", tag: "STABLE_MIRROR" },
+            { name: "EDPUZZLE_CV", url: "https://edpuzzle.cv", tag: "EDU_CLOAK" },
+            { name: "TWISTED_SURGE", url: "https://twisted.surge.sh", tag: "STATIC_HOST" },
+            { name: "BLANK_DOC_CARRD", url: "https://blank-document.cardd.co", tag: "CLOAKED_DOC" },
+            { name: "GN_MATH_LIVE", url: "https://run.plnkr.co", tag: "PLNKR_UPLINK" },
+            { name: "SUNDOWN_V1", url: "https://sites.google.com", tag: "G_SITES_CLOAK" }
         ];
 
         const grid = document.getElementById('gameGrid');
 
-        for (let i = 1; i <= 50; i++) {
-            const hub = gameHubs[(i - 1) % gameHubs.length];
-            const btnWrapper = document.createElement('div');
-            btnWrapper.className = "button";
-            btnWrapper.id = `node-${i}`;
-            
-            // FIXED REDIRECT: Uses /url?q= parameter for trust-based redirection
-            const googleMask = `https://www.google.com{encodeURIComponent(hub.url)}`;
-            
-            btnWrapper.innerHTML = `
-                <a href="${googleMask}" target="_blank" class="node-link">
-                    ${hub.name}_${i}
-                    <span class="desc">STATUS: ACTIVE // PORT: ${7000 + i}</span>
-                </a>
-                <div class="report-btn" onclick="document.getElementById('node-${i}').classList.toggle('ghosted')">[REPORT_GHOSTED]</div>
-            `;
-            grid.appendChild(btnWrapper);
+        userLinks.forEach((link, i) => {
+            const btn = document.createElement('div');
+            btn.className = "button";
+            const mask = `https://www.google.com{encodeURIComponent(link.url)}`;
+            btn.innerHTML = `<a href="${mask}" target="_blank" class="node-link">${link.name}<span class="desc">TYPE: ${link.tag} // UPLINK_${i+1}</span></a>`;
+            grid.appendChild(btn);
+        });
+
+        for (let i = userLinks.length; i < 60; i++) {
+            const slot = document.createElement('div');
+            slot.className = "button"; slot.style.opacity = "0.3";
+            slot.innerHTML = `<span style="font-size:10px;">AWAITING_UPLINK_${i+1}...</span>`;
+            grid.appendChild(slot);
         }
 
-        // Matrix Rain
-        const canvas = document.getElementById('matrix');
+        const canvas = document.querySelector('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth; canvas.height = window.innerHeight;
         const drops = Array(Math.floor(canvas.width / 16)).fill(1);
