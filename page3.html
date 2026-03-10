@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal V3 | Utilities</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABy0lEQVR4nO3cMUhVYRzH8R8SiaChIerY0NDS0GDT0OBio001NDW0NTRG09DQ0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDSwL78A86H6Q9856rUAAAAAElFTkSuQmCC">
+    
+    <style type="text/css">
+        body {
+            background: #000; color: #00ff41; font-family: 'Courier New', monospace;
+            margin: 0; overflow: hidden; display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* MATRIX CANVAS */
+        canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.25; }
+
+        header { 
+            text-align: center; padding: 25px; border: 1px solid #00ff41; width: 85%; 
+            margin-top: 20px; background: rgba(0, 15, 0, 0.9); box-shadow: 0 0 15px #00ff41;
+        }
+        
+        h1 { font-size: 38px; letter-spacing: 3px; text-shadow: 0 0 10px #00ff41; margin: 0; }
+        
+        .hub-container { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; width: 90%; max-width: 1200px; margin-top: 30px;
+            overflow-y: auto; height: 60vh; padding: 15px; border: 1px solid rgba(0, 255, 65, 0.2);
+        }
+        
+        .button { 
+            height: 90px; border: 1px solid #00ff41; background: rgba(0, 255, 65, 0.05); 
+            transition: 0.2s; display: flex; align-items: center; justify-content: center;
+        }
+        .button:hover { background: #00ff41; box-shadow: 0 0 20px #00ff41; transform: scale(1.02); }
+        .button-text { text-decoration: none; color: #00ff41; font-weight: bold; text-align: center; }
+        .button:hover .button-text { color: #000; }
+        .desc { font-size: 10px; display: block; margin-top: 5px; opacity: 0.7; }
+
+        .nav-footer { margin: 30px 0; display: flex; gap: 20px; z-index: 10; }
+        .page-link { 
+            padding: 12px 25px; border: 1px solid #00ff41; text-decoration: none; 
+            color: #00ff41; font-weight: bold; background: #000; transition: 0.3s;
+        }
+        .page-link:hover { background: #00ff41; color: #000; box-shadow: 0 0 15px #00ff41; }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix"></canvas>
+
+    <header>
+        <h1>TERMINAL_V3: SYSTEM TOOLS</h1>
+        <p style="font-size: 12px;">[ENCRYPTED UPLINK // 2026 STUDENT OVERRIDE]</p>
+    </header>
+
+    <div class="hub-container">
+        <!-- ADVANCED 2026 PROXIES -->
+        <div class="button" style="border-color: #ffffff;">
+            <a href="https://daydreamproxy.com" target="_blank" class="button-text">DAYDREAM_X<span class="desc">High-speed 2026 Stealth Proxy</span></a>
+        </div>
+        <div class="button" style="border-color: #ffffff;">
+            <a href="https://reds-exploit.github.io" target="_blank" class="button-text">RED'S_EXPLOIT<span class="desc">Bypass filters & Unblock JS</span></a>
+        </div>
+
+        <!-- AI & STUDY AIDS -->
+        <div class="button">
+            <a href="https://www.documind.chat" target="_blank" class="button-text">DOCUMIND_AI<span class="desc">Analyze PDFs & Homework</span></a>
+        </div>
+        <div class="button">
+            <a href="https://www.wolframalpha.com" target="_blank" class="button-text">WOLFRAM_SOLVER<span class="desc">Math & Science engine</span></a>
+        </div>
+
+        <!-- PRODUCTIVITY -->
+        <div class="button">
+            <a href="https://quizlet.com" target="_blank" class="button-text">QUIZLET_PRO<span class="desc">Smart Flashcards</span></a>
+        </div>
+        <div class="button">
+            <a href="https://www.notion.so" target="_blank" class="button-text">NOTION_HQ<span class="desc">Workspace & Note-taking</span></a>
+        </div>
+
+        <!-- UTILITIES -->
+        <div class="button">
+            <a href="javascript:(function(){var url='https://classroom.google.com';var num=prompt('Flood history?','50');if(num){for(var i=0;i<num;i++){history.pushState({},'',url+'#'+Math.random());}alert('History Corrupted.');}})();" class="button-text">HISTORY_SPAM<span class="desc">Flood logs with Classroom</span></a>
+        </div>
+    </div>
+
+    <div class="nav-footer">
+        <a href="page2.html" class="page-link"><- Back to Hell</a>
+        <a href="page4.html" class="page-link">GO TO PAGE 4: VENBOT? (X_X)</a>
+    </div>
+
+    <script>
+        // Matrix Rain Logic
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const letters = "01010101010101010101010101010101";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 35);
+        // Panic Key Override
+        window.addEventListener('keydown', e => { if(e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com'); });
+    </script>
+</body>
+</html>
