@@ -7,91 +7,100 @@
         :root { 
             --main: #000000; 
             --bg: #ffffff; 
-            --accent: #bc13fe; /* Keeping the purple for the Shield V */
+            --purple: #bc13fe;
         }
         
         body {
             background-color: var(--bg);
-            background-image: radial-gradient(var(--main) 1px, transparent 0);
-            background-size: 20px 20px; /* Halftone Background */
+            /* HALFTONE BLING PATTERN */
+            background-image: radial-gradient(rgba(0,0,0,0.1) 1px, transparent 0);
+            background-size: 18px 18px;
             color: var(--main);
             font-family: 'Times New Roman', serif;
             margin: 0; display: flex; flex-direction: column; align-items: center;
             min-height: 100vh; overflow-x: hidden;
         }
 
-        /* V-SHIELD LOGO CLONE */
-        .logo-wrapper {
-            margin-top: 40px; position: relative; width: 120px; height: 120px;
+        /* LOGO CLONE FROM IMAGE */
+        .header-logo {
+            margin-top: 30px; position: relative; width: 100px; height: 110px;
             display: flex; align-items: center; justify-content: center;
         }
-        .shield-v {
-            position: absolute; width: 100px; height: 110px;
-            background: var(--accent); opacity: 0.15;
+        .shield-icon {
+            position: absolute; width: 100%; height: 100%;
+            background: rgba(188, 19, 254, 0.1); border: 2px solid var(--purple);
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            filter: drop-shadow(0 0 10px var(--purple));
         }
-        .logo-text { font-size: 80px; font-weight: 900; z-index: 2; color: #000; }
+        .v-text { font-size: 70px; font-weight: 900; z-index: 2; color: #000; }
 
-        header { text-align: center; margin-bottom: 50px; background: white; padding: 20px; border-bottom: 4px solid #000; width: 100%; box-shadow: 0 10px 0 rgba(0,0,0,0.05); }
-        h1 { font-size: 45px; letter-spacing: 10px; margin: 0; text-transform: uppercase; }
-        .slogan { font-style: italic; font-size: 16px; margin-top: 5px; color: #333; }
+        header { text-align: center; margin-bottom: 40px; padding: 20px; border-bottom: 5px solid #000; width: 100%; background: #fff; z-index: 5; }
+        h1 { font-size: 40px; letter-spacing: 12px; margin: 0; text-transform: uppercase; font-weight: 900; }
+        .slogan { font-style: italic; font-size: 14px; margin-top: 5px; color: #444; }
 
         .container { 
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 20px; width: 90%; max-width: 1200px; z-index: 5;
+            gap: 15px; width: 90%; max-width: 1200px; z-index: 5;
         }
         
-        /* CLEAN MONO BUTTONS */
+        /* SHARP MONO BUTTONS */
         .button { 
-            background: #fff; border: 3px solid #000; padding: 25px; 
+            background: #fff; border: 2px solid #000; padding: 20px; 
             text-align: center; text-decoration: none; color: #000;
-            font-weight: bold; font-size: 18px; transition: 0.2s;
-            box-shadow: 8px 8px 0px #000;
+            font-weight: bold; transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 6px 6px 0px #000;
         }
-        .button:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px var(--accent); }
-        .desc { display: block; font-size: 11px; font-weight: normal; margin-top: 8px; opacity: 0.6; text-transform: uppercase; }
+        .button:hover { 
+            transform: translate(-3px, -3px); 
+            box-shadow: 10px 10px 0px var(--purple);
+            background: #fafafa;
+        }
+        .desc { display: block; font-size: 10px; font-weight: normal; margin-top: 5px; opacity: 0.5; text-transform: uppercase; }
 
-        .section-title { width: 90%; margin: 40px 0 20px; font-size: 24px; font-weight: 900; border-bottom: 2px solid #000; padding-bottom: 5px; }
+        .section-title { width: 90%; margin: 30px 0 15px; font-size: 22px; font-weight: 900; border-bottom: 2px solid #000; display: inline-block; }
 
-        /* KATANAS IN THE GROUND */
+        /* KATANAS IN GROUND (FOOTER) */
         .ground-blade {
-            position: fixed; bottom: -20px; font-size: 80px; 
-            transform: rotate(-15deg); filter: grayscale(1); opacity: 0.8;
+            position: fixed; bottom: -20px; font-size: 70px; 
+            filter: grayscale(1) drop-shadow(5px 5px 0 #000); opacity: 0.9;
             pointer-events: none; z-index: 10;
         }
 
-        .panic { position: fixed; bottom: 20px; left: 20px; background: #000; color: #fff; padding: 10px 20px; font-weight: bold; cursor: pointer; border: 2px solid #fff; z-index: 100; }
+        .panic { position: fixed; bottom: 20px; left: 20px; background: #000; color: #fff; padding: 10px 25px; font-weight: bold; border: none; cursor: pointer; z-index: 100; font-size: 12px; }
+        .panic:hover { background: var(--purple); }
     </style>
 </head>
 <body>
 
-    <div class="logo-wrapper">
-        <div class="shield-v"></div>
-        <div class="logo-text">V</div>
+    <div class="header-logo">
+        <div class="shield-icon"></div>
+        <div class="v-text">V</div>
     </div>
 
     <header>
         <h1>VENHUB</h1>
         <div class="slogan">"where securly comes to die."</div>
+        <div style="font-size: 9px; margin-top: 10px; opacity: 0.5;">gatekeep ts pls</div>
     </header>
 
     <div class="section-title">UPLINK_PROXIES</div>
     <div class="container">
-        <a href="https://universal.v6.rocks" target="_blank" class="button">UNIVERSAL<span class="desc">High-speed 2026 unblocker</span></a>
-        <a href="https://void.v6.rocks" target="_blank" class="button">VOID<span class="desc">Stealth bypass node</span></a>
+        <a href="https://universal.v6.rocks" target="_blank" class="button">UNIVERSAL<span class="desc">High-speed 2026 bypass</span></a>
+        <a href="https://void.v6.rocks" target="_blank" class="button">VOID_NET<span class="desc">Ultra-stable stealth node</span></a>
     </div>
 
     <div class="section-title">COMBAT_GAMES</div>
     <div class="container">
-        <a href="https://run.plnkr.co" target="_blank" class="button">GN MATH<span class="desc">Cloaked Hub</span></a>
+        <a href="https://run.plnkr.co" target="_blank" class="button">GN MATH<span class="desc">Cloaked Repository</span></a>
         <a href="https://twisted.surge.sh" target="_blank" class="button">TWISTED SURGE<span class="desc">Static Host</span></a>
         <a href="https://watermelon46.com" target="_blank" class="button">WATERMELON 46<span class="desc">Game Library</span></a>
         <a href="https://edpuzzle.cv" target="_blank" class="button">EDPUZZLE CV<span class="desc">Education Mirror</span></a>
     </div>
 
-    <!-- Katanas sticking in ground -->
-    <div class="ground-blade" style="left: 5%;">🗡️</div>
-    <div class="ground-blade" style="right: 5%; transform: rotate(15deg);">🗡️</div>
+    <!-- The Grounded Katanas -->
+    <div class="ground-blade" style="left: 2%;">🗡️</div>
+    <div class="ground-blade" style="left: 12%; transform: rotate(-25deg); bottom: -30px;">🗡️</div>
+    <div class="ground-blade" style="right: 5%; transform: rotate(20deg);">🗡️</div>
 
     <div class="panic" onclick="window.location.replace('https://classroom.google.com')">EXIT_COMBAT (Q)</div>
 
