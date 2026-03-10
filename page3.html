@@ -2,102 +2,128 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Terminal V3 | 2026_ELITE_FEED</title>
+    <title>Lunar Hub | Elite Feed</title>
     <style>
-        :root { --neon: #00ff41; --bg: #000; --panel: rgba(0, 255, 65, 0.05); }
-        body { background: var(--bg); color: var(--neon); font-family: 'Courier New', monospace; margin: 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
-        canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.2; }
-        header { text-align: center; padding: 25px; border: 1px solid var(--neon); width: 85%; margin-top: 20px; background: rgba(0, 15, 0, 0.9); box-shadow: 0 0 15px var(--neon); }
-        h1 { font-size: 38px; letter-spacing: 4px; text-shadow: 0 0 10px var(--neon); margin: 0; }
-        .gatekeep { font-size: 10px; color: #fff; opacity: 0.6; margin-top: 8px; font-style: italic; }
+        :root { 
+            --lunar-white: #f5f5f7; 
+            --lunar-gray: #8e8e93;
+            --space-bg: #ffffff; 
+            --accent: #007aff; /* Clean Satellite Blue */
+            --glass: rgba(255, 255, 255, 0.7);
+        }
+        
+        body { 
+            background: var(--space-bg); 
+            color: #1d1d1f; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; overflow-x: hidden;
+        }
+
+        /* Subtle Orbital Background */
+        body::before {
+            content: ""; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at center, #f0f0f5 0%, #ffffff 100%);
+            z-index: -1;
+        }
+
+        header { 
+            text-align: center; padding: 40px 20px; width: 100%;
+            background: var(--glass); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin: 0; color: #000; }
+        
+        .gatekeep { font-size: 11px; color: var(--lunar-gray); margin-top: 10px; font-style: italic; }
 
         .hub-container { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 12px; width: 90%; max-width: 1400px; margin-top: 30px;
-            overflow-y: auto; height: 60vh; padding: 20px; 
-            border: 1px solid rgba(0, 255, 65, 0.3); background: rgba(0,0,0,0.7);
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 20px; width: 90%; max-width: 1200px; margin: 40px 0;
+            padding: 10px;
         }
         
         .button { 
-            height: 100px; border: 1px solid var(--neon); background: var(--panel); 
-            transition: 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 120px; border-radius: 18px; border: 1px solid rgba(0,0,0,0.05);
+            background: var(--glass); backdrop-filter: blur(5px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
-        .node-link { text-decoration: none; color: var(--neon); font-weight: bold; text-align: center; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; }
-        .button:hover { background: var(--neon); color: #000; box-shadow: 0 0 20px var(--neon); transform: scale(1.03); }
-        .button:hover .node-link { color: #000; }
         
-        .desc { font-size: 9px; display: block; margin-top: 4px; opacity: 0.8; font-weight: normal; }
-        .nav-footer { margin: 25px 0; display: flex; gap: 20px; z-index: 10; }
-        .page-link { padding: 12px 25px; border: 1px solid var(--neon); text-decoration: none; color: var(--neon); font-weight: bold; background: #000; transition: 0.3s; }
-        .page-link:hover { background: var(--neon); color: #000; }
+        .node-link { text-decoration: none; color: #1d1d1f; font-weight: 500; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: var(--neon); }
+        .button:hover { 
+            background: #ffffff; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06); 
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .desc { font-size: 10px; color: var(--lunar-gray); margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .nav-footer { margin-bottom: 50px; display: flex; gap: 15px; }
+        .page-link { 
+            padding: 12px 24px; border-radius: 30px; border: 1px solid #000; 
+            text-decoration: none; color: #000; font-size: 13px; font-weight: 500;
+            transition: 0.3s; background: transparent;
+        }
+        .page-link:hover { background: #000; color: #fff; }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #fff; }
+        ::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 10px; }
     </style>
 </head>
 <body>
-    <canvas id="matrix"></canvas>
+
     <header>
-        <h1>TERMINAL_V3: ELITE_FEED</h1>
-        <div class="gatekeep">gatekeep ts pls // LIVE_UPLINK_MODE // 2026</div>
+        <h1>LUNAR_BLANC // FEED_V3</h1>
+        <div class="gatekeep">gatekeep ts pls // orbital protocol active</div>
     </header>
 
     <div class="hub-container" id="gameGrid"></div>
 
     <div class="nav-footer">
-        <a href="page2.html" class="page-link"><- BACK_TO_HELL</a>
-        <a href="page4.html" class="page-link">GO_TO_VENBOT -></a>
+        <a href="page2.html" class="page-link">← Phase 2</a>
+        <a href="page4.html" class="page-link">Phase 4 →</a>
     </div>
 
     <script>
-        // PURGED OLD LIST - INJECTING NEW VERIFIED NODES
         const verifiedUplinks = [
-            { name: "DUCK_MATH_ORIGIN", url: "https://duckmath.org", tag: "STABLE_HUB" },
-            { name: "GN_MATH_PLNKR", url: "https://run.plnkr.co", tag: "CLOAKED_CODE" },
-            { name: "WOLF_CAVE_LOL", url: "https://lol.wolfcave.me", tag: "GAMES_NODE" },
-            { name: "WATERMELON_46", url: "https://watermelon46.com", tag: "MEDIA_HUB" },
-            { name: "TWISTED_SURGE", url: "https://twisted.surge.sh", tag: "STATIC_MIRROR" },
-            { name: "BLANK_DOC_CARRD", url: "https://blank-document.cardd.co", tag: "STEALTH_DOC" },
-            { name: "SUNDOWN_V1", url: "https://sites.google.com", tag: "G_SITES_CLOAK" },
-            { name: "EDPUZZLE_CV", url: "https://edpuzzle.cv", tag: "EDU_CLOAK" }
+            { name: "DUCK_MATH", url: "https://duckmath.org", tag: "STABLE" },
+            { name: "GN_MATH", url: "https://run.plnkr.co", tag: "CLOAKED" },
+            { name: "WOLF_CAVE", url: "https://lol.wolfcave.me", tag: "NODE" },
+            { name: "WATERMELON_46", url: "https://watermelon46.com", tag: "MEDIA" },
+            { name: "TWISTED_SURGE", url: "https://twisted.surge.sh", tag: "STATIC" },
+            { name: "BLANK_CARRD", url: "https://blank-document.cardd.co", tag: "STEALTH" },
+            { name: "SUNDOWN", url: "https://sites.google.com", tag: "G_SITE" },
+            { name: "EDPUZZLE_CV", url: "https://edpuzzle.cv", tag: "EDU" }
         ];
 
         const grid = document.getElementById('gameGrid');
 
-        // Render Exactly 60 Nodes (Cycling your links to fill the industrial look)
         for (let i = 0; i < 60; i++) {
             const data = verifiedUplinks[i % verifiedUplinks.length];
             const btn = document.createElement('div');
             btn.className = "button";
             
-            // Fixed Google Trust-Mask Redirect
+            // Masked Redirect
             const mask = `https://www.google.com{encodeURIComponent(data.url)}`;
             
             btn.innerHTML = `
                 <a href="${mask}" target="_blank" class="node-link">
-                    ${data.name}_${i+1}
-                    <span class="desc">TYPE: ${data.tag} // UPLINK: ${8000+i}</span>
+                    <span>${data.name}_${i+1}</span>
+                    <span class="desc">${data.tag} // LVL_${i+1}</span>
                 </a>
             `;
             grid.appendChild(btn);
         }
 
-        // Matrix Rain
-        const canvas = document.querySelector('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-        const drops = Array(Math.floor(canvas.width / 16)).fill(1);
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#0F0"; ctx.font = "16px monospace";
-            drops.forEach((y, i) => {
-                ctx.fillText(Math.floor(Math.random()*2), i * 16, y * 16);
-                if (y * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            });
-        }
-        setInterval(draw, 35);
-        window.addEventListener('keydown', e => { if(e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com'); });
+        // Clean Panic Redirect
+        window.addEventListener('keydown', e => { 
+            if(e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com'); 
+        });
     </script>
 </body>
 </html>
