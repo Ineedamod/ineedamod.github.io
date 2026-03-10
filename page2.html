@@ -1,126 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Infernal Hub | Movies & Anime</title>
+    <meta charset="UTF-8">
+    <title>Infernal Hub | Media Vault V6.0</title>
     <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVU...">
-    
-    <style type="text/css">
+    <style>
+        :root { --lava: #ff4500; --fire: #ff0000; --bg: #050000; --panel: rgba(255, 69, 0, 0.1); }
         body {
-            background: #000; color: #ff4500; font-family: 'Courier New', monospace;
+            background: var(--bg); color: var(--lava); font-family: 'Courier New', monospace;
             margin: 0; overflow-x: hidden; display: flex; flex-direction: column; align-items: center;
         }
 
-        /* LAVA ANIMATION BACKGROUND */
-        .lava-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #500 0%, #000 100%); z-index: -1;
-        }
-        .lava-blob {
-            position: absolute; background: rgba(255, 69, 0, 0.4);
-            filter: blur(60px); border-radius: 50%;
-            animation: flow 15s infinite alternate ease-in-out;
-        }
-        @keyframes flow {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(100px, 50px) scale(1.5); }
-            100% { transform: translate(-50px, 150px) scale(0.8); }
-        }
+        /* LAVA BG ANIMATION */
+        .lava-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #300 0%, #000 100%); }
+        .blob { position: absolute; background: rgba(255, 0, 0, 0.2); filter: blur(80px); border-radius: 50%; animation: flow 20s infinite alternate ease-in-out; }
+        @keyframes flow { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(100px, 200px) scale(1.3); } }
 
-        header { text-align: center; padding: 40px; border-bottom: 3px solid #ff4500; width: 85%; margin-bottom: 30px; background: rgba(0,0,0,0.8); }
-        h1 { font-size: 45px; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 0 20px #ff0000; margin: 0; }
-        
-        /* THE MASSIVE GRID */
+        header { text-align: center; padding: 40px; border-bottom: 3px solid var(--lava); width: 85%; margin-bottom: 30px; background: rgba(0,0,0,0.8); box-shadow: 0 0 20px var(--fire); }
+        h1 { font-size: 42px; text-transform: uppercase; letter-spacing: 6px; text-shadow: 0 0 15px var(--fire); margin: 0; }
+        .gatekeep { font-size: 10px; color: #fff; opacity: 0.6; margin-top: 10px; font-style: italic; }
+
         .hub-container { 
             display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 15px; width: 90%; max-width: 1400px; 
+            gap: 15px; width: 90%; max-width: 1300px; padding-bottom: 50px;
         }
         
         .button { 
-            height: 95px; border: 2px solid #ff4500; background: rgba(255, 69, 0, 0.1); 
+            height: 100px; border: 2px solid var(--lava); background: var(--panel); 
             transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-decoration: none; color: #ff4500; font-weight: bold; text-align: center;
+            text-decoration: none; color: var(--lava); font-weight: bold; text-align: center;
         }
-        .button:hover { 
-            background: #ff4500; box-shadow: 0 0 30px #ff0000; transform: scale(1.05); color: #000;
-        }
-        .desc { font-size: 9px; display: block; margin-top: 5px; font-weight: normal; opacity: 0.8; }
+        .button:hover { background: var(--lava); color: #000; box-shadow: 0 0 30px var(--fire); transform: translateY(-5px); }
+        .desc { font-size: 9px; margin-top: 6px; font-weight: normal; opacity: 0.8; }
 
-        .nav-footer { margin: 60px 0; display: flex; gap: 20px; }
-        .page-link { 
-            padding: 15px 30px; border: 2px solid #ff4500; text-decoration: none; 
-            color: #ff4500; font-weight: bold; background: #000; transition: 0.3s;
-        }
-        .page-link:hover { background: #ff4500; color: #000; box-shadow: 0 0 20px #ff4500; }
+        .nav-footer { margin: 40px 0; display: flex; gap: 20px; }
+        .page-link { padding: 15px 30px; border: 2px solid var(--lava); text-decoration: none; color: var(--lava); font-weight: bold; transition: 0.3s; }
+        .page-link:hover { background: var(--lava); color: #000; }
     </style>
 </head>
 <body>
 
-    <div class="lava-bg">
-        <div class="lava-blob" style="width:400px; height:400px; top:10%; left:10%;"></div>
-        <div class="lava-blob" style="width:300px; height:300px; bottom:20%; right:15%; animation-delay: -5s;"></div>
-        <div class="lava-blob" style="width:500px; height:500px; top:50%; left:40%; animation-delay: -2s;"></div>
-    </div>
+    <div class="lava-bg"><div class="blob" style="width:500px; height:500px; top:10%; left:5%;"></div></div>
 
     <header>
-        <h1>INFERNAL_MEDIA_HUB</h1>
-        <p style="color: #ff0000;">[200+ UNBLOCKED STREAM NODES ACTIVE]</p>
-        <div style="font-size: 10px; color: #ff8c00; font-style: italic;">gatekeep ts pls</div>
+        <h1>INFERNAL_MEDIA</h1>
+        <div class="gatekeep">gatekeep ts pls // V6 SOUL</div>
     </header>
 
     <div class="hub-container" id="mediaGrid">
-        <!-- JS generates 200+ Movie and Anime buttons here -->
+        <!-- 50 Soulful Media Nodes Injected Here -->
     </div>
 
     <div class="nav-footer">
-        <a href="index.html" class="page-link"><- Back to Home</a>
-        <a href="page3.html" class="page-link">Go to Page 3? XD</a>
+        <a href="index.html" class="page-link"><- BACK_TO_CORE</a>
+        <a href="page3.html" class="page-link">GO_TO_TERMINAL -></a>
     </div>
 
     <script>
-        const movieSources = [
-            { name: "123_MOVIES", url: "https://ww24.0123movie.net" },
-            { name: "PUTLOCKER_V2", url: "https://officialputlocker.com" },
-            { name: "FM_MOVIES", url: "https://fmovies.to" },
-            { name: "SOAP_2_DAY", url: "https://soap2day.rs" },
-            { name: "MOVIE_JOY", url: "https://moviesjoy.to" }
-        ];
-
-        const animeSources = [
-            { name: "GOGO_ANIME", url: "https://gogoanime3.co" },
-            { name: "9_ANIME_TV", url: "https://9animetv.to" },
-            { name: "ANIWATCH_ME", url: "https://aniwatchtv.to" },
+        const proxyGateway = "https://www.croxyproxy.com";
+        
+        const masterList = [
             { name: "HI_ANIME", url: "https://hianime.to" },
-            { name: "ZORO_STREAM", url: "https://zoro.bz" }
+            { name: "SOAP_2_DAY", url: "https://soap2day.rs" },
+            { name: "SFLIX_PRO", url: "https://sflix.to" },
+            { name: "9_ANIME", url: "https://9animetv.to" },
+            { name: "FLIX_HQ", url: "https://flixhq.to" },
+            { name: "MOVIES_JOY", url: "https://moviesjoy.to" },
+            { name: "GOGO_STREAM", url: "https://gogoanime3.co" },
+            { name: "ZORO_X", url: "https://zoro.bz" },
+            { name: "F_MOVIES", url: "https://fmovies.to" },
+            { name: "ANIWATCH", url: "https://aniwatchtv.to" }
         ];
 
         const grid = document.getElementById('mediaGrid');
 
-        for (let i = 1; i <= 210; i++) {
-            const isAnime = i % 2 === 0;
-            const sourceList = isAnime ? animeSources : movieSources;
-            const source = sourceList[Math.floor(Math.random() * sourceList.length)];
-            
+        for (let i = 1; i <= 50; i++) {
+            const data = masterList[(i - 1) % masterList.length];
             const btn = document.createElement('a');
             btn.className = "button";
             btn.target = "_blank";
-            // Routing through a bypass gateway for maximum reliability
-            btn.href = `https://www.google.com{source.url}`; 
+            
+            // Encode URL to Base64 to confuse basic keyword filters
+            const encodedUrl = btoa(data.url);
+            btn.href = `${proxyGateway}${encodedUrl}`;
             
             btn.innerHTML = `
-                ${isAnime ? "ANIME" : "MOVIE"}_NODE_${i}
-                <span class="desc">Source: ${source.name} // Port: ${8000 + i}</span>
+                ${data.name}_NODE_${i}
+                <span class="desc">Encrypted Stream // Port: ${9000 + i}</span>
             `;
-            
-            // Apply orange border to anime, red to movies
-            if (isAnime) btn.style.borderColor = "#ff8c00";
-            
             grid.appendChild(btn);
         }
 
-        // Panic Switch
-        window.addEventListener('keydown', (e) => {
-            if (e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com');
-        });
+        // Panic Key
+        window.addEventListener('keydown', e => { if(e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com'); });
     </script>
 </body>
 </html>
