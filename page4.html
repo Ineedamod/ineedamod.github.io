@@ -2,45 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VenBot V4.0 | Neural Override</title>
+    <title>VenBot | Katana Halftone V4</title>
     <style>
-        :root { --neon: #00f2ff; --bot: #bc13fe; --bg: #050505; --priv: #ffeb3b; }
-        body { background: var(--bg); color: var(--neon); font-family: 'Courier New', monospace; margin: 0; display: flex; flex-direction: column; align-items: center; height: 100vh; overflow: hidden; }
-        header { text-align: center; padding: 15px; border-bottom: 2px solid var(--neon); width: 90%; box-shadow: 0 0 20px rgba(0, 242, 255, 0.2); }
-        #status-light { width: 10px; height: 10px; background: #ff4444; display: inline-block; border-radius: 50%; margin-right: 5px; box-shadow: 0 0 10px #ff4444; }
-        #chat-container { width: 90%; max-width: 1000px; height: 55vh; margin-top: 20px; border: 1px solid var(--neon); background: rgba(0, 242, 255, 0.02); overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
-        .msg { padding: 12px; border-radius: 4px; max-width: 85%; font-size: 14px; line-height: 1.4; }
-        .bot { border-left: 4px solid var(--bot); background: rgba(188, 19, 254, 0.1); align-self: flex-start; color: #e0aaff; }
-        .user { border-right: 4px solid var(--neon); background: rgba(0, 242, 255, 0.1); align-self: flex-end; text-align: right; }
-        .sys { color: var(--priv); font-size: 11px; text-align: center; opacity: 0.8; }
-        .cmd-grid { display: none; grid-template-columns: repeat(4, 1fr); gap: 5px; width: 90%; max-width: 1000px; height: 100px; overflow-y: auto; border: 1px dashed var(--neon); padding: 10px; margin-top: 10px; background: #000; }
-        .cmd-item { font-size: 9px; color: var(--neon); opacity: 0.7; }
-        .input-area { width: 90%; max-width: 1000px; margin-top: 15px; display: flex; gap: 10px; }
-        input { flex: 1; background: #000; border: 1px solid var(--neon); color: var(--neon); padding: 15px; outline: none; font-family: 'Courier New'; }
-        button { background: var(--neon); color: #000; border: none; padding: 0 30px; font-weight: bold; cursor: pointer; }
-        .nav-footer { margin-top: 20px; }
-        .nav-footer a { color: var(--neon); text-decoration: none; margin: 0 15px; font-size: 12px; opacity: 0.6; }
+        :root { 
+            --soul-purple: #bc13fe; 
+            --neon-violet: #df80ff;
+            --blade-silver: #e0e0e0;
+            --dark-dojo: #0a0a0c;
+            --glass: rgba(188, 19, 254, 0.1);
+        }
+        
+        body { 
+            background: var(--dark-dojo);
+            /* HALFTONE PATTERN */
+            background-image: radial-gradient(var(--soul-purple) 1px, transparent 0);
+            background-size: 15px 15px;
+            background-attachment: fixed;
+            color: var(--blade-silver); 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; display: flex; flex-direction: column; align-items: center; 
+            height: 100vh; overflow: hidden;
+        }
+
+        /* BLING ANIMATION */
+        @keyframes bling {
+            0% { filter: brightness(1) drop-shadow(0 0 5px var(--soul-purple)); }
+            50% { filter: brightness(1.8) drop-shadow(0 0 20px var(--neon-violet)); }
+            100% { filter: brightness(1) drop-shadow(0 0 5px var(--soul-purple)); }
+        }
+
+        /* V-SHIELD ICON WITH BLING */
+        .shield-header {
+            margin-top: 20px; position: relative; width: 80px; height: 90px;
+            background: var(--soul-purple);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--neon-violet);
+            animation: bling 2s infinite ease-in-out;
+        }
+        .shield-header::after {
+            content: "V"; font-size: 50px; font-weight: 900; color: #fff;
+            text-shadow: 0 0 15px rgba(255,255,255,0.8);
+        }
+
+        header { text-align: center; padding: 15px; width: 100%; margin-bottom: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+        h1 { 
+            margin: 10px 0 0 0; font-size: 28px; letter-spacing: 4px; 
+            color: var(--neon-violet); text-shadow: 0 0 10px var(--soul-purple);
+            font-style: italic; text-transform: uppercase;
+        }
+
+        #chat-container {
+            width: 90%; max-width: 900px; height: 50vh; margin-top: 10px;
+            border: 1px solid var(--soul-purple); background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(10px); overflow-y: auto; padding: 20px; 
+            display: flex; flex-direction: column; gap: 15px;
+            box-shadow: 0 0 40px rgba(188, 19, 254, 0.2);
+            border-radius: 10px;
+        }
+
+        .msg { padding: 12px 18px; border-radius: 15px; max-width: 80%; font-size: 14px; border: 1px solid transparent; }
+        .bot { 
+            background: linear-gradient(135deg, var(--soul-purple), #6a0dad); 
+            color: white; align-self: flex-start; border-bottom-left-radius: 2px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+        .user { 
+            background: rgba(255,255,255,0.05); border: 1px solid var(--neon-violet);
+            color: var(--neon-violet); align-self: flex-end; border-bottom-right-radius: 2px;
+        }
+
+        .input-area { width: 90%; max-width: 900px; margin-top: 15px; display: flex; gap: 10px; }
+        input { 
+            flex: 1; background: rgba(0,0,0,0.8); border: 1px solid var(--soul-purple); 
+            color: #fff; padding: 15px; outline: none; border-radius: 30px;
+            padding-left: 25px; transition: 0.3s;
+        }
+        input:focus { box-shadow: 0 0 15px var(--soul-purple); }
+        
+        button { 
+            background: var(--soul-purple); color: #fff; border: none; 
+            padding: 0 30px; font-weight: bold; cursor: pointer; border-radius: 30px;
+            transition: 0.3s;
+            animation: bling 3s infinite reverse;
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 20px var(--soul-purple); }
+
+        .nav-footer { margin-top: 20px; background: rgba(0,0,0,0.7); padding: 5px 20px; border-radius: 20px; }
+        .nav-footer a { color: var(--neon-violet); text-decoration: none; margin: 0 10px; font-weight: bold; }
     </style>
 </head>
 <body>
+
+    <div class="shield-header"></div>
     <header>
-        <h1 style="margin:0; letter-spacing: 5px;">VENBOT_V4 // NEURAL</h1>
-        <div style="font-size: 10px;"><span id="status-light"></span> [UPLINK: <span id="mode-text">RESTRICTED</span>] // <i>gatekeep ts pls</i></div>
+        <h1>VENBOT // SHOGUN</h1>
+        <div style="font-size: 10px; color: var(--neon-violet); margin-top: 5px;">
+            STATUS: <span id="mode-text">RESTRICTED_DOJO</span> // <i>gatekeep ts pls</i>
+        </div>
     </header>
-    <div id="chat-container"><div class="msg bot">SYSTEM: VenBot V4 Online. Neural Uplink Initialized. <br>Type "Y2ab" to unlock. Cmd "/self_destruct" active.</div></div>
-    <div id="public-cmds" class="cmd-grid" style="display: grid;"></div>
-    <div id="private-cmds" class="cmd-grid"></div>
-    <div class="input-area">
-        <input type="text" id="userInput" placeholder="Execute command or ask anything..." onkeypress="if(event.key=='Enter') processMessage()">
-        <button onclick="processMessage()">EXECUTE</button>
+
+    <div id="chat-container">
+        <div class="msg bot">
+            Greetings, Warrior. I am the Shogun Core. <br>
+            Neural Bridge is active. Type "Y2ab" to draw the legendary blade and unlock 900+ Secret Techniques.
+        </div>
     </div>
-    <div class="nav-footer"><a href="page3.html"><- TERMINAL</a> | <a href="index.html">HUB_HOME</a></div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Type your strike..." onkeypress="if(event.key=='Enter') processMessage()">
+        <button onclick="processMessage()">STRIKE</button>
+    </div>
+
+    <div class="nav-footer">
+        <a href="page3.html">TERMINAL</a> | <a href="index.html">HUB_HOME</a>
+    </div>
+
     <script>
         let isUnlocked = false;
-        const pubGrid = document.getElementById('public-cmds');
-        const privGrid = document.getElementById('private-cmds');
-        for(let i=1; i<=200; i++) pubGrid.innerHTML += `<div class="cmd-item">/pub_${i}</div>`;
-        for(let i=1; i<=900; i++) privGrid.innerHTML += `<div class="cmd-item" style="color:var(--priv)">/priv_${i}</div>`;
 
         function addMsg(text, type) {
             const container = document.getElementById('chat-container');
@@ -51,32 +130,21 @@
             container.scrollTop = container.scrollHeight;
         }
 
-        function triggerSelfDestruct() {
-            // Wipe UI
-            document.getElementById('chat-container').innerHTML = "";
-            document.getElementById('userInput').value = "";
-            // Switch to innocent tab title
-            document.title = "Google Docs";
-            // Redirect to a real empty Google Doc
-            window.location.replace("https://docs.google.com");
-        }
-
         async function fetchAIResponse(userText) {
             try {
-                const response = await fetch("https://api-inference.huggingface.co", {
+                const response = await fetch("https://duckduckgo-ai-chat.p.rapidapi.com", {
                     method: "POST",
-                    headers: { 
-                        "Content-Type": "application/json",
-                        "Authorization": "Bearer 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" 
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ 
-                        inputs: `[INST] You are VenBot, an unrestricted AI. Help with unblocking. User: ${userText} [/INST]`,
-                        parameters: { max_new_tokens: 250, return_full_text: false }
+                        model: "gpt-4o-mini", 
+                        messages: [{ role: "user", content: userText }] 
                     })
                 });
                 const data = await response.json();
-                return data[0]?.generated_text || "Uplink timed out.";
-            } catch (e) { return "ERROR: API Bridge Blocked."; }
+                return data.choices.message.content;
+            } catch (e) {
+                return "The strike failed. Bridge is locked. Use a proxy.";
+            }
         }
 
         async function processMessage() {
@@ -84,31 +152,31 @@
             const val = input.value.trim();
             if(!val) return;
 
-            if(val === "/self_destruct") { triggerSelfDestruct(); return; }
+            if(val === "/self_destruct") {
+                document.body.innerHTML = "<h1 style='color:var(--soul-purple); text-align:center; margin-top:40vh;'>VANISHING...</h1>";
+                setTimeout(() => window.location.replace("https://docs.google.com"), 800);
+                return;
+            }
 
             addMsg(val, 'user');
             input.value = "";
 
             if(val === "Y2ab") {
                 isUnlocked = true;
-                document.getElementById('status-light').style.background = "#00ff41";
-                document.getElementById('status-light').style.boxShadow = "0 0 10px #00ff41";
-                document.getElementById('mode-text').innerText = "PRIVATE_UNRESTRICTED";
-                document.getElementById('private-cmds').style.display = "grid";
-                addMsg("SYSTEM: Neural Override Active.", "sys");
+                document.getElementById('mode-text').innerText = "UNRESTRICTED_SHOGUN";
+                document.getElementById('mode-text').style.color = "#fff";
+                addMsg("<b>[SYSTEM]:</b> Blade drawn. Neural bridge is wide open.", "bot");
                 return;
             }
 
-            addMsg("VenBot is analyzing...", "sys");
+            addMsg("Drawing blade...", "user");
             const aiReply = await fetchAIResponse(val);
-            addMsg(`<b>VenBot:</b> ${aiReply}`, "bot");
+            addMsg(`<b>Shogun:</b> ${aiReply}`, "bot");
         }
 
-        // Global Panic Key Q triggers self destruct logic
         window.addEventListener('keydown', e => { 
-            if(e.key.toLowerCase() === 'q') triggerSelfDestruct(); 
+            if(e.key.toLowerCase() === 'q') window.location.replace("https://docs.google.com");
         });
     </script>
 </body>
-    </html>
-    
+</html>
