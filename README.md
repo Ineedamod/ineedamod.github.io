@@ -1,41 +1,38 @@
 # ⚔️ VenHub V7 | Monochrome Katana Edition
 > **"Where Securly comes to die."**
 
-VenHub is a lightweight, high-performance unblocked hub designed to bypass 2026 school filters. Built with a stark **Monochrome Katana** aesthetic, featuring halftone patterns and a clean, clinical white design.
+VenHub is a high-performance, two-page unblocked hub designed for the 2026 school cycle. Featuring a stark **Monochrome Katana** home and a **Golden Age of 1999** media vault.
 
 ---
 
-## 💎 Elite Uplink Buttons
+## 💎 FUNCTIONS;
+The following uplinks are currently **FLOURISHING** and verified for bypass:
 
-| Category | Source | Description |
-| :--- | :--- | :--- |
-| **Proxy** | [Universal](https://universal.v6.rocks) | High-speed 2026 unblocker node. |
-| **Proxy** | [Void Net](https://void.v6.rocks) | Ultra-stable stealth bypass. |
-| **Game** | [GN Math](https://run.plnkr.co) | Cloaked Plnkr repository. |
-| **Game** | [Twisted Surge](https://twisted.surge.sh) | Permanent static host. |
-| **Game** | [Watermelon 46](https://watermelon46.com) | Mass-node game library. |
-| **Game** | [Edpuzzle CV](https://edpuzzle.cv) | Educational cloak mirror. |
+*   **Proxies**: [Universal](https://universal.v6.rocks) // [Void Net](https://void.v6.rocks)
+*   **Games**: [GN Math](https://run.plnkr.co) // [Twisted Surge](https://twisted.surge.sh) // [Watermelon 46](https://watermelon46.com) // [Edpuzzle CV](https://edpuzzle.cv)
+*   **Media**: [HiAnime](https://hianime.to) // [SFlix](https://sflix.to) // [Soap2Day](https://soap2day.rs)
 
 ---
 
-## 🛠️ Combat Features
-*   **Monochrome Halftone Aesthetic**: Clean manga-style visual design optimized for low-spec Chromebooks.
-*   **V-Shield Shogun Core**: A distinctive purple-accented shield logo representing the Hub's protection.
-*   **Emergency Panic (Q)**: Tap **"Q"** at any time to instantly vanish into a fake Google Classroom page.
-*   **Stealth Redirection**: All buttons use trust-masked routing to slip past basic keyword filters.
+## 🚀 PROS OF VENHUB
+*   **Manga-Grade Halftone UI**: Optimized for low-spec Chromebooks to ensure 0% lag while browsing.
+*   **Dual-Theme Logic**: Shifts from Monochrome Stealth (Page 1) to Golden Age 1999 Luxury (Page 2).
+*   **Trust-Masked Routing**: Every button uses a Google-redirect protocol to bypass keyword-based DNS filters.
+*   **Emergency Panic (Q)**: Instant, frame-one redirect to Google Classroom to protect your session.
+*   **Gatekeep Protocol**: Minimalist code that is harder for automated "Crawler" bots to flag as a game site.
 
 ---
 
-## 📜 Deployment
-1.  Fork this repository.
-2.  Navigate to **Settings > Pages**.
-3.  Set the Branch to `main` and Folder to `/root`.
-4.  Your hub is live.
+## 🛡️ LICENSE
+**MIT License**
+
+Copyright (c) 2026 VenHub Developers
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the software.
+
+*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND...*
 
 ---
-
-## ⚠️ Disclaimer
-This repository is for educational and anti-censorship research purposes. Usage of these tools to bypass administrative restrictions is at your own risk. **btw gatekeep ts pls.**
-
----
-*V_UPLINK_ESTABLISHED_2026*
+**btw gatekeep ts pls.**
