@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Vens Securly Hub V2.5</title>
-    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABy0lEQVR4nO3cMUhVYRzH8R8SiaChIerY0NDS0GDT0OBio001NDW0NTRG09DQ0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDSwL78A86H6Q9856rUAAAAAElFTkSuQmCC">
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVU...">
     
     <style type="text/css">
         body {
@@ -15,22 +15,21 @@
             animation: float 3s ease-in-out infinite; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .logo-wrapper:hover .floating-logo { transform: rotate(360deg) scale(1.1); }
-        .logo-wrapper:hover h1 { animation: glitch 0.3s infinite; }
-        @keyframes glitch {
-            0% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
-            50% { text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff; }
-            100% { text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff; }
-        }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+        
         header { text-align: center; padding: 20px; border-bottom: 2px solid #bc13fe; width: 80%; margin-bottom: 30px; }
         h1 { font-size: 38px; margin: 0; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 12px #bc13fe; }
+        
         .hub-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 95%; max-width: 1200px; }
         .button { position: relative; height: 85px; border: 2px solid #bc13fe; background: rgba(188, 19, 254, 0.05); transition: all 0.3s ease; }
         .button:hover { background: #bc13fe; box-shadow: 0 0 25px #bc13fe; transform: translateY(-3px); }
         .button:hover .button-text { color: #0a0a0a; }
+        
         .button-text { text-decoration: none; color: #bc13fe; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; font-weight: bold; }
         .desc { font-size: 9px; text-transform: none; margin-top: 4px; opacity: 0.8; }
+        
         .panic-bar { color: #ff4444; font-size: 14px; margin-bottom: 20px; border: 1px solid #ff4444; padding: 10px; background: rgba(255,0,0,0.1); width: 80%; text-align: center; }
+        
         .page-nav { margin-top: 50px; padding: 15px 40px; border: 2px dashed #bc13fe; text-decoration: none; color: #bc13fe; font-weight: bold; transition: 0.3s; }
         .page-nav:hover { background: #bc13fe; color: #0a0a0a; box-shadow: 0 0 15px #bc13fe; }
     </style>
@@ -38,7 +37,7 @@
 <body>
     <header>
         <div class="logo-wrapper">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABy0lEQVR4nO3cMUhVYRzH8R8SiaChIerY0NDS0GDT0OBio001NDW0NTRG09DQ0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDS0NDSwL78A86H6Q9856rUAAAAAElFTkSuQmCC" class="floating-logo">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVU..." class="floating-logo">
             <h1>VENS SECURLY HUB</h1>
         </div>
         <div style="color: #888; font-size: 14px;">[SYSTEM UPLINK ESTABLISHED 2026]</div>
@@ -47,7 +46,6 @@
     <div class="panic-bar">PRESS "Q" TO PANIC TO CLASSROOM</div>
 
     <div class="hub-container">
-        <!-- FUNCTIONAL PROXIES 2026 -->
         <div class="button" style="border-color: #00ffff;">
             <a href="https://croxyproxy.com" target="_blank" class="button-text">CROXY_PROXY<span class="desc">Reliable video & web unblocker</span></a>
         </div>
@@ -57,16 +55,8 @@
         <div class="button" style="border-color: #00ff00;">
             <a href="https://poki.com" target="_blank" class="button-text">POKI_GAMES<span class="desc">Massive library of web games</span></a>
         </div>
-        <div class="button" style="border-color: #00ff00;">
-            <a href="https://hoodamath.com" target="_blank" class="button-text">HOODA_MATH<span class="desc">"Educational" logic games</span></a>
-        </div>
-
-        <!-- TOOLS -->
         <div class="button">
-            <a href="javascript:(function(){var url='https://classroom.google.com';var num=prompt('Flood history?','50');if(num){for(var i=0;i<num;i++){history.pushState({},'',url+'#'+Math.random());}alert('Done');}})();" class="button-text">HISTORY_FLOODER<span class="desc">Spam classroom entries</span></a>
-        </div>
-        <div class="button">
-            <a href="javascript:(function(){document.title='Google Docs';var l=document.querySelector('link[rel*=\'icon\']')||document.createElement('link');l.href='https://ssl.gstatic.com';document.head.appendChild(l);alert('Cloaked');})();" class="button-text">TAB_DISGUISE<span class="desc">Change icon to Google Docs</span></a>
+            <a href="javascript:(function(){var url='https://classroom.google.com';var num=50;for(var i=0;i<num;i++){history.pushState({},'',url+'#'+Math.random());}alert('Done');})();" class="button-text">HISTORY_FLOODER<span class="desc">Spam classroom entries</span></a>
         </div>
     </div>
 
