@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VenHub | System Override V3.0</title>
+    <style>
+        :root { --alert: #ff0033; --bg: #050505; --text: #ffffff; }
+        body {
+            background-color: var(--bg); color: var(--text); font-family: 'Courier New', monospace;
+            margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+        }
+
+        /* OVERRIDE HEADER */
+        header { 
+            text-align: center; padding: 30px; border-bottom: 2px solid var(--alert); 
+            width: 100%; background: rgba(255, 0, 51, 0.05); box-shadow: 0 0 20px rgba(255, 0, 51, 0.2);
+        }
+        h1 { font-size: 35px; letter-spacing: 10px; margin: 0; color: var(--alert); text-shadow: 0 0 10px var(--alert); }
+        .warning { font-size: 10px; margin-top: 10px; color: #888; text-transform: uppercase; }
+
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 90%; max-width: 1200px; margin-top: 40px; padding-bottom: 100px; }
+
+        /* BYPASS NODES */
+        .node { 
+            background: #000; border: 1px solid var(--alert); padding: 25px; 
+            text-decoration: none; color: var(--text); transition: 0.3s;
+            box-shadow: 4px 4px 0px var(--alert);
+        }
+        .node:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px #fff; background: #111; }
+        .node-title { display: block; font-weight: bold; font-size: 18px; color: var(--alert); }
+        .node-desc { display: block; font-size: 11px; margin-top: 10px; line-height: 1.4; opacity: 0.8; }
+
+        /* PANIC & NAV */
+        .nav-footer { position: fixed; bottom: 0; width: 100%; background: #000; border-top: 1px solid var(--alert); padding: 15px; text-align: center; }
+        .back-link { color: var(--alert); text-decoration: none; font-weight: bold; padding: 8px 20px; border: 1px solid var(--alert); transition: 0.3s; }
+        .back-link:hover { background: var(--alert); color: #000; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SYSTEM_OVERRIDE</h1>
+        <div class="warning">[ UPLINK_STATUS: BYPASS_READY // TARGET: SECURLY_GOGUARDIAN_LIGHTSPEED ]</div>
+    </header>
+
+    <div class="container">
+        <!-- 2026 BYPASS METHODS -->
+        <a href="https://daydreamproxy.com" target="_blank" class="node">
+            <span class="node-title">DAYDREAM_X_NODE</span>
+            <span class="node-desc">Current top-tier 2026 proxy for low-latency stealth browsing.</span>
+        </a>
+
+        <a href="javascript:(function(){window.onkeydown=function(e){if(e.key.toLowerCase()=='q')window.close();};alert('Manual Override: Window-Close Logic Injected');})();" class="node">
+            <span class="node-title">MEMORY_CRASH_SCRIPT</span>
+            <span class="node-desc">Targeted memory handling script to disrupt extension monitoring loops.</span>
+        </a>
+
+        <a href="https://algebra.icu" target="_blank" class="node">
+            <span class="node-title">ALGEBRA_ICU_GATEWAY</span>
+            <span class="node-desc">Math-cloaked gateway that presents a fake educational UI to scanners.</span>
+        </a>
+
+        <a href="https://reds-exploit.github.io" target="_blank" class="node">
+            <span class="node-title">RED'S_EXPLOIT_V8</span>
+            <span class="node-desc">Bypasses advanced JS-based filtering agents using proxy-uplink protocols.</span>
+        </a>
+
+        <a href="https://github.com/3kh0/ext-remover" target="_blank" class="node">
+            <span class="node-title">EXT_REMOVER_GUIDE</span>
+            <span class="node-desc">GitHub repository for ChromeOS exploits targeting extension removal.</span>
+        </a>
+
+        <a href="https://corsera.gq" target="_blank" class="node">
+            <span class="node-title">CORSERA_UPLINK</span>
+            <span class="node-desc">Direct proxy server connection for bypassing GoGuardian/Securly filters.</span>
+        </a>
+    </div>
+
+    <div class="nav-footer">
+        <a href="index.html" class="back-link">← RETURN_TO_BASE</a>
+    </div>
+
+    <script>
+        window.addEventListener('keydown', e => { 
+            if(e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com'); 
+        });
+    </script>
+</body>
+</html>
