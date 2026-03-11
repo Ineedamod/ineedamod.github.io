@@ -2,165 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VenHub | Golden Age 1999</title>
+    <title>VenHub | Golden Age 1999 V4.0</title>
     <style>
-        :root { 
-            --gold: #d4af37; 
-            --deep-gold: #aa8811;
-            --bg: #0a0a0a; 
-            --status-green: #00ff41;
-        }
-        
-        body {
-            background-color: var(--bg);
-            background-image: url("https://www.transparenttextures.com");
-            color: var(--gold);
-            font-family: 'Georgia', serif;
-            margin: 0; display: flex; flex-direction: column; align-items: center;
-            min-height: 100vh; overflow-x: hidden;
-        }
-
-        /* SYSTEM STATUS INDICATOR */
-        .status-bar {
-            position: fixed; top: 20px; right: 20px;
-            display: flex; align-items: center; gap: 10px;
-            font-family: 'Courier New', monospace; font-size: 10px;
-            letter-spacing: 1px; z-index: 1000;
-        }
-        .status-dot {
-            width: 8px; height: 8px; background: var(--status-green);
-            border-radius: 50%; box-shadow: 0 0 10px var(--status-green);
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-
-        /* HEADER LOGO */
-        .header-logo {
-            margin-top: 30px; position: relative; width: 90px; height: 100px;
-            display: flex; align-items: center; justify-content: center;
-            filter: drop-shadow(0 0 15px var(--deep-gold));
-        }
-        .shield-icon {
-            position: absolute; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--gold), var(--deep-gold));
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-        .v-text { font-size: 60px; font-weight: 900; z-index: 2; color: #000; }
-
-        header { 
-            text-align: center; margin-bottom: 40px; padding: 30px; 
-            border-bottom: 2px solid var(--gold); width: 85%; 
-        }
-        h1 { 
-            font-size: 38px; letter-spacing: 5px; margin: 0; 
-            text-transform: uppercase; font-weight: 900;
-            text-shadow: 2px 2px 0px #000, 4px 4px 0px var(--deep-gold);
-        }
-        .subtitle { font-size: 12px; margin-top: 10px; letter-spacing: 3px; opacity: 0.8; }
-
-        .section-title { 
-            width: 85%; margin: 30px 0 15px; font-size: 18px; 
-            font-weight: 900; color: #000; background: var(--gold);
-            padding: 5px 15px; letter-spacing: 2px;
-        }
-
-        .container { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-            gap: 15px; width: 90%; max-width: 1300px; padding-bottom: 100px;
-        }
-        
-        .button { 
-            background: #000; border: 1px solid var(--gold); padding: 25px; 
-            text-align: center; text-decoration: none; color: var(--gold);
-            font-weight: bold; transition: 0.3s;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
-        }
-        .button:hover { 
-            background: var(--gold); color: #000;
-            box-shadow: 0 0 30px var(--gold);
-            transform: scale(1.05);
-        }
-        .desc { display: block; font-size: 9px; font-weight: normal; margin-top: 8px; opacity: 0.6; }
-
+        :root { --gold: #d4af37; --deep-gold: #aa8811; --bg: #0a0a0a; --status: #00ff41; }
+        body { background: var(--bg); color: var(--gold); font-family: 'Georgia', serif; margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .status-bar { position: fixed; top: 20px; right: 20px; display: flex; align-items: center; gap: 8px; font-family: monospace; font-size: 10px; z-index: 1000; }
+        .dot { width: 8px; height: 8px; background: var(--status); border-radius: 50%; box-shadow: 0 0 10px var(--status); animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        header { text-align: center; padding: 40px; border-bottom: 2px solid var(--gold); width: 85%; margin-bottom: 30px; }
+        h1 { font-size: 42px; letter-spacing: 5px; margin: 0; text-transform: uppercase; text-shadow: 2px 2px #000, 4px 4px var(--deep-gold); }
+        .section-title { width: 85%; margin: 30px 0 15px; font-size: 18px; font-weight: 900; color: #000; background: var(--gold); padding: 5px 15px; letter-spacing: 2px; }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; width: 90%; max-width: 1400px; padding-bottom: 100px; }
+        .button { background: #000; border: 1px solid var(--gold); padding: 25px; text-align: center; text-decoration: none; color: var(--gold); font-weight: bold; transition: 0.3s; }
+        .button:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); transform: scale(1.03); }
+        .desc { display: block; font-size: 9px; margin-top: 8px; opacity: 0.6; font-weight: normal; }
         .nav-footer { position: fixed; bottom: 0; width: 100%; background: #000; border-top: 1px solid var(--gold); padding: 15px; text-align: center; z-index: 100; }
-        .back-link { color: var(--gold); text-decoration: none; font-weight: bold; font-size: 14px; border: 1px solid var(--gold); padding: 8px 20px; transition: 0.3s; }
+        .back-link { color: var(--gold); text-decoration: none; font-weight: bold; padding: 8px 20px; border: 1px solid var(--gold); margin: 0 10px; transition: 0.3s; }
         .back-link:hover { background: var(--gold); color: #000; }
     </style>
 </head>
 <body>
-
-    <div class="status-bar">
-        <div class="status-dot"></div>
-        <span>UPLINK_ACTIVE_2026</span>
-    </div>
-
-    <div class="header-logo">
-        <div class="shield-icon"></div>
-        <div class="v-text">V</div>
-    </div>
-
+    <div class="status-bar"><div class="dot"></div><span>UPLINK_STABLE_03.2026</span></div>
     <header>
         <h1>GOLDEN_AGE_1999</h1>
-        <div class="subtitle">[ MEDIA_ARCHIVE // EST_2026 // gatekeep ts pls ]</div>
+        <div style="font-size: 11px; margin-top: 10px; opacity: 0.7;">[ MEDIA_VAULT // MARCH_2026_MIRRORS ]</div>
     </header>
-
-    <div class="section-title">UNBLOCKED_ANIME_STREAMS</div>
+    <div class="section-title">UNBLOCKED_ANIME_MIRRORS</div>
     <div class="container" id="animeGrid"></div>
-
-    <div class="section-title">UNBLOCKED_MOVIE_VAULT</div>
+    <div class="section-title">UNBLOCKED_CINEMA_MIRRORS</div>
     <div class="container" id="movieGrid"></div>
-
     <div class="nav-footer">
-        <a href="index.html" class="back-link">← RETURN_TO_MONOCHROME_HOME</a>
+        <a href="index.html" class="back-link">← HOME</a>
+        <a href="#" onclick="checkPass()" class="back-link" style="border-color: #ff0033; color: #ff0033;">GO TO P3! [OVERRIDE]</a>
     </div>
-    <div class="nav-footer">
-    <a href="index.html" class="back-link">← RETURN_TO_HOME</a>
-    <!-- NEW PAGE 3 BUTTON -->
-    <a href="page3.html" class="back-link" style="border-color: #ff0033; color: #ff0033; margin-left: 15px;">GO TO P3! [OVERRIDE]</a>
-</div>
-
-
     <script>
-        // Diversified 2026 Mirror List
-        const animeSites = [
-            { name: "HI_ANIME", url: "https://hianime.to" },
-            { name: "ANIWAVE_X", url: "https://aniwave.se" },
-            { name: "9_ANIME", url: "https://9animetv.to" },
-            { name: "GOGO_MIRROR", url: "https://gogoanime3.co" },
-            { name: "KAIDO_TV", url: "https://kaido.to" },
-            { name: "ANIX_UPLINK", url: "https://anix.to" },
-            { name: "ALLWISH", url: "https://allwish.to" }
+        const animeNodes = [
+            { n: "HI_ANIME", u: "https://hianime.to" }, { n: "KAIDO_TV", u: "https://kaido.to" },
+            { n: "ALLWISH", u: "https://allwish.to" }, { n: "ANIX_AC", u: "https://anix.ac" }
         ];
-
-        const movieSites = [
-            { name: "SFLIX_PRO", url: "https://sflix.to" },
-            { name: "SOAP_GATE", url: "https://soap2day.rs" },
-            { name: "FLIX_HQ", url: "https://flixhq.to" },
-            { name: "MOVIES_JOY", url: "https://moviesjoy.to" },
-            { name: "VUMOO_HD", url: "https://vumoo.to" },
-            { name: "FM_MIRROR", url: "https://fmovies.to" },
-            { name: "AZ_STREAMS", url: "https://azm.to" }
+        const movieNodes = [
+            { n: "NETWIX_XYZ", u: "https://netwix.xyz" }, { n: "SFLIX_TO", u: "https://sflix.to" },
+            { n: "VUMOO_TO", u: "https://vumoo.to" }, { n: "FLIX_HQ", u: "https://flixhq.to" }
         ];
-
-        const populateGrid = (gridId, sites, protocol) => {
-            const grid = document.getElementById(gridId);
-            for (let i = 1; i <= 25; i++) {
-                const site = sites[i % sites.length];
-                grid.innerHTML += `
-                    <a href="${site.url}" target="_blank" class="button">
-                        ${site.name}_V${i}
-                        <span class="desc">${protocol} // UPLINK_${8000+i}</span>
-                    </a>
-                `;
+        function gen(id, list, prot) {
+            const g = document.getElementById(id);
+            for (let i = 1; i <= 16; i++) {
+                const s = list[i % list.length];
+                g.innerHTML += `<a href="${s.u}" target="_blank" class="button">${s.n}_V${i}<span class="desc">${prot} // NODE_${8000+i}</span></a>`;
             }
-        };
-
-        populateGrid('animeGrid', animeSites, '1999_PROTOCOL');
-        populateGrid('movieGrid', movieSites, 'GOLDEN_VAULT');
-
-        window.addEventListener('keydown', e => { 
-            if(e.key.toLowerCase() === 'q') window.location.replace('https://classroom.google.com'); 
-        });
+        }
+        gen('animeGrid', animeNodes, '1999_PROTOCOL');
+        gen('movieGrid', movieNodes, 'GOLDEN_VAULT');
+        function checkPass() {
+            const p = prompt("ENTER_OVERRIDE_CODE:");
+            if (p === "V3N") window.location.href = "page3.html";
+            else alert("ACCESS_DENIED");
+        }
+        window.addEventListener('keydown', e => { if(e.key.toLowerCase()==='q') window.location.replace('https://classroom.google.com'); });
     </script>
 </body>
 </html>
