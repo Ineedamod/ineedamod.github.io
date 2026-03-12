@@ -2,46 +2,193 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UPLINK_STREAMS | VenHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPLINK_STREAMS | VenHub Proxy</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #000; font-family: monospace; }
-        #nav-bar { 
-            position: fixed; top: 0; width: 100%; background: #111; color: #fff; 
-            padding: 10px; display: flex; gap: 10px; z-index: 100; border-bottom: 2px solid #bc13fe;
+        /* --- CORE STYLING --- */
+        :root {
+            --ui-bg: #0a0a0a;
+            --ui-border: #bc13fe;
+            --ui-text: #00ff41;
+            --accent: #bc13fe;
         }
-        input { flex: 1; background: #000; border: 1px solid #444; color: #0f0; padding: 5px; outline: none; }
-        button { background: #bc13fe; border: none; color: #fff; cursor: pointer; padding: 5px 15px; font-weight: bold; }
-        iframe { width: 100%; height: calc(100% - 45px); margin-top: 45px; border: none; }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            overflow: hidden; background: #000;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* --- NAVIGATION INTERFACE --- */
+        #browser-ui {
+            position: fixed; top: 0; left: 0; width: 100%;
+            height: 55px; background: var(--ui-bg);
+            border-bottom: 2px solid var(--ui-border);
+            display: flex; align-items: center; padding: 0 15px;
+            box-sizing: border-box; z-index: 1000;
+            gap: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+        }
+
+        .nav-controls { display: flex; gap: 5px; }
+
+        .nav-btn {
+            background: #222; border: 1px solid #444; color: #fff;
+            padding: 8px 12px; cursor: pointer; font-size: 14px;
+            transition: 0.2s; border-radius: 3px;
+        }
+
+        .nav-btn:hover { background: var(--accent); border-color: #fff; }
+
+        .address-bar-wrapper {
+            flex: 1; position: relative; display: flex; align-items: center;
+        }
+
+        #urlInput {
+            width: 100%; background: #000; border: 1px solid #333;
+            color: var(--ui-text); padding: 10px 15px; font-size: 14px;
+            outline: none; transition: 0.3s; border-radius: 4px;
+        }
+
+        #urlInput:focus { border-color: var(--accent); box-shadow: 0 0 10px var(--accent); }
+
+        .status-light {
+            width: 10px; height: 10px; background: var(--ui-text);
+            border-radius: 50%; margin-right: 10px; box-shadow: 0 0 5px var(--ui-text);
+        }
+
+        /* --- IFRAME VIEWPORT --- */
+        #viewport-container {
+            width: 100%; height: calc(100% - 55px);
+            margin-top: 55px; background: #fff;
+        }
+
+        iframe {
+            width: 100%; height: 100%; border: none;
+            background: #fff; display: block;
+        }
+
+        /* --- LOADING OVERLAY --- */
+        #loader {
+            position: fixed; top: 55px; left: 0; width: 100%; height: 5px;
+            background: #111; display: none; overflow: hidden;
+        }
+
+        #loader-bar {
+            width: 30%; height: 100%; background: var(--accent);
+            animation: slide 1.5s infinite ease-in-out;
+        }
+
+        @keyframes slide {
+            0% { margin-left: -30%; }
+            100% { margin-left: 100%; }
+        }
     </style>
 </head>
 <body>
-    <div id="nav-bar">
-        <span>[PROXY_ACTIVE]</span>
-        <input type="text" id="urlInput" placeholder="ENTER_UPLINK_URL (https://...)">
-        <button onclick="launch()">INJECT</button>
-        <button onclick="location.href='index.html'" style="background:#444">EXIT</button>
+
+    <div id="browser-ui">
+        <div class="status-light" id="connection-status"></div>
+        
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="history.back()">&#11148;</button>
+            <button class="nav-btn" onclick="document.getElementById('view').src = document.getElementById('view').src">&#10227;</button>
+        </div>
+
+        <div class="address-bar-wrapper">
+            <input type="text" id="urlInput" placeholder="Enter URL or search DuckDuckGo..." spellcheck="false">
+        </div>
+
+        <button class="nav-btn" style="background: var(--accent); font-weight: bold;" onclick="launchStream()">INITIALIZE</button>
+        <button class="nav-btn" style="background: #444;" onclick="location.href='index.html'">HUB</button>
     </div>
-    <iframe id="view" src="about:blank"></iframe>
+
+    <div id="loader"><div id="loader-bar"></div></div>
+
+    <div id="viewport-container">
+        <!-- Customized built-in element for bypassing X-Frame headers -->
+        <iframe is="x-frame-bypass" id="view" src="about:blank"></iframe>
+    </div>
 
     <script>
-        // Auto-inject Bypass Logic
-        function launch() {
-            let url = document.getElementById('urlInput').value;
-            if (!url.startsWith('http')) url = 'https://' + url;
+        // --- X-FRAME-BYPASS WEB COMPONENT ---
+        // This logic intercepts the iframe's request and routes it through a CORS proxy.
+        // It rewrites the fetched HTML so it can be safely displayed on your site.
+        class XFrameBypass extends HTMLIFrameElement {
+            static get observedAttributes() { return ['src']; }
+            constructor() { super(); }
             
-            const frame = document.getElementById('view');
-            
-            // Securly/GoGuardian Redirect Trap
-            window.onbeforeunload = () => "Navigation Blocked by VenHub Proxy.";
-            
-            frame.src = url;
-            console.log("Stream Injected: " + url);
+            attributeChangedCallback(name, oldValue, newValue) {
+                if (newValue !== null && newValue !== oldValue && newValue !== 'about:blank') {
+                    this.render(newValue);
+                }
+            }
+
+            async render(url) {
+                const loader = document.getElementById('loader');
+                loader.style.display = 'block';
+
+                try {
+                    // Using AllOrigins CORS Proxy to fetch the site content
+                    const response = await fetch(`https://api.allorigins.win{encodeURIComponent(url)}`);
+                    if (!response.ok) throw new Error('Proxy_Stream_Failed');
+                    
+                    const data = await response.json();
+                    let html = data.contents;
+
+                    // Rewriting paths so images and links work via the proxy
+                    const baseUrl = url.split('/').slice(0, 3).join('/');
+                    html = html.replace(/<head>/i, `<head><base href="${url}">`);
+                    
+                    // Injecting our own Securly-Bypass logic into the frame
+                    const bypassScript = `
+                        <script>
+                            window.alert = () => true;
+                            window.onbeforeunload = () => null;
+                            console.log("VenHub_Frame_Security_Injected");
+                        <\/script>
+                    `;
+                    html = html.replace(/<\/head>/i, bypassScript + '</head>');
+
+                    this.srcdoc = html;
+                } catch (err) {
+                    this.srcdoc = `<body style="background:#000;color:red;font-family:monospace;padding:20px;">
+                        <h2>CRITICAL_PROXY_ERROR</h2>
+                        <p>Stream failed to initialize for: ${url}</p>
+                        <p>Cause: CORS_RESTRICTION or TARGET_OFFLINE</p>
+                    </body>`;
+                } finally {
+                    loader.style.display = 'none';
+                }
+            }
+        }
+        customElements.define('x-frame-bypass', XFrameBypass, {extends: 'iframe'});
+
+        // --- BROWSER NAVIGATION LOGIC ---
+        function launchStream() {
+            let query = document.getElementById('urlInput').value.trim();
+            if (!query) return;
+
+            let target = "";
+            // Logic to determine if input is a URL or a search query
+            if (query.includes('.') && !query.includes(' ')) {
+                target = query.startsWith('http') ? query : 'https://' + query;
+            } else {
+                // DuckDuckGo Integration
+                target = `https://duckduckgo.com{encodeURIComponent(query)}`;
+            }
+
+            document.getElementById('view').setAttribute('src', target);
+            document.getElementById('urlInput').value = target;
         }
 
-        // Enter key listener
+        // Handle Enter Key
         document.getElementById('urlInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') launch();
+            if (e.key === 'Enter') launchStream();
         });
+
+        // Visual connection check
+        window.addEventListener('online', () => document.getElementById('connection-status').style.background = '#00ff41');
+        window.addEventListener('offline', () => document.getElementById('connection-status').style.background = '#ff0000');
     </script>
 </body>
 </html>
